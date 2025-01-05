@@ -39,6 +39,138 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
         }
+        
+        .bela-favorite {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .bela-favorite .favorite-card {
+            display: flex;
+            gap: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            opacity: 0.8;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .bela-favorite .favorite-card:hover {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .favorite-card .card-img {
+            flex: 1;
+            max-width: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .favorite-card .card-img img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .favorite-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        
+        .favorite-card .card-content {
+            flex: 1;
+            padding: 15px;
+        }
+        
+        .favorite-card .card-title {
+            margin: 15px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .favorite-card:hover .card-title {
+            color: var(--primary-color);
+        }
+        
+        .favorite-card .card-text {
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .favorite-card:hover .card-text {
+            color: #333;
+        }
+        
+        .hover-container {
+            position: relative;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .info-icon {
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+        
+        .hover-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 300px;
+            z-index: 1000;
+            text-align: center;
+        }
+        
+        .hover-content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+        
+        .hover-content p {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        /* Show content on hover */
+        .hover-container:hover .hover-content {
+            display: block;
+        }
+        
+        /* Optional animation */
+        .hover-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .hover-container:hover .hover-content {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
     </style>
 </head>
 
@@ -70,6 +202,10 @@
                 </a>
 
                 <div class="header-btn-group">
+                    <button class="theme-toggle-btn" aria-label="Toggle Theme">
+                        <ion-icon name="moon-outline" class="moon-icon"></ion-icon>
+                        <ion-icon name="sunny-outline" class="sun-icon"></ion-icon>
+                    </button>
 
                     <button class="search-btn" aria-label="Search">
                         <ion-icon name="search"></ion-icon>
@@ -153,12 +289,27 @@
 
                 </nav>
 
-                <button class="btn btn-primary">Book Now</button>
+                <button class="btn btn-primary" title="Book Now">Book Now</button>
 
             </div>
         </div>
 
     </header>
+
+    <div class="search-modal" id="searchModal">
+        <div class="search-modal-content">
+            <span class="close-search">&times;</span>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search destinations...">
+                <button class="search-button">
+                    <ion-icon name="search-outline"></ion-icon>
+                </button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+    </div>
 
     <main>
         <article>
@@ -174,9 +325,9 @@
                     </p>
 
                     <div class="btn-group">
-                        <button class="btn btn-primary">Learn more</button>
+                        <button class="btn btn-primary" title="Learn More">Learn more</button>
 
-                        <button class="btn btn-secondary">Book now</button>
+                        <button class="btn btn-secondary" title="Book Now">Book now</button>
                     </div>
 
                 </div>
@@ -214,7 +365,7 @@
                             <input type="date" name="checkout" id="checkout" required class="input-field">
                         </div>
 
-                        <button type="submit" class="btn btn-secondary">Inquire now</button>
+                        <button type="submit" class="btn btn-secondary" title="Inquire Now">Inquire now</button>
 
                     </form>
 
@@ -260,7 +411,7 @@
                                     </h3>
 
                                     <p class="card-text">
-                                      San Miguel de Allende, a colonial-era city in Mexico’s central highlands, is known for its baroque Spanish architecture, thriving arts scene and cultural festivals. 
+                                      San Miguel de Allende, a colonial-era city in Mexico's central highlands, is known for its baroque Spanish architecture, thriving arts scene and cultural festivals. 
                                     </p>
 
                                 </div>
@@ -338,7 +489,115 @@
 
                     </ul>
 
-                    <button class="btn btn-primary">More destintions</button>
+                    <div class="bela-favorite">
+                        <div class="title-container">
+                            <h3 class="h2 section-title">Bela's Favorite Destinations</h3>
+                            <div class="hover-container">
+                                <span class="info-icon">ℹ️</span>
+                                <div class="hover-content">
+                                    <img src="images/photo_2025-01-04_23-01-12.jpg" alt="Bela's profile" loading="lazy">
+                                    <p>
+                                        Our Bela is a very big foodie so all of her choices on the destination are over food quality and the most recommened destination she gives are down below hahaha🤣🤣
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="favorite-card">
+                            <figure class="card-img">
+                                <img src="https://th.bing.com/th/id/OIP.tWAokkF0ej87d5mzw_AGXgAAAA?rs=1&pid=ImgDetMain" alt="Seoul street food" loading="lazy" style="height: 400px; object-fit: cover;">
+                            </figure>
+
+                            <div class="card-content">
+                                <div class="card-rating">
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                </div>
+
+                                <p class="card-subtitle">
+                                    <a href="#">South Korea</a>
+                                </p>
+
+                                <h3 class="h3 card-title">
+                                    <a href="#">Seoul</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    Seoul's culinary scene is a feast for the senses! From sizzling Korean BBQ and 
+                                    spicy tteokbokki to fresh bibimbap and street food delights in Myeongdong, 
+                                    the city offers an incredible array of flavors. Don't miss trying authentic 
+                                    kimchi and Korean fried chicken paired with local soju!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="favorite-card">
+                            <figure class="card-img">
+                                <img src="https://th.bing.com/th/id/OIP.oA_H32BxZMn8rwLPhf9J5AHaEK?rs=1&pid=ImgDetMain" alt="Tokyo cuisine" loading="lazy" style="height: 400px; object-fit: cover;">
+                            </figure>
+
+                            <div class="card-content">
+                                <div class="card-rating">
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                </div>
+
+                                <p class="card-subtitle">
+                                    <a href="#">Japan</a>
+                                </p>
+
+                                <h3 class="h3 card-title">
+                                    <a href="#">Tokyo</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    Tokyo is a paradise for food lovers! From world-class sushi at Tsukiji Market 
+                                    to steaming bowls of ramen in cozy alleyways, every meal is an adventure. 
+                                    Experience the artistry of Japanese cuisine through tempura, wagyu beef, 
+                                    and delicate wagashi sweets.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="favorite-card">
+                            <figure class="card-img">
+                                <img src="https://static1.thetravelimages.com/wordpress/wp-content/uploads/2022/09/Italian-food-in-Rome.jpg" alt="Roman cuisine" loading="lazy" style="height: 400px; object-fit: cover;">
+                            </figure>
+
+                            <div class="card-content">
+                                <div class="card-rating">
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                </div>
+
+                                <p class="card-subtitle">
+                                    <a href="#">Italy</a>
+                                </p>
+
+                                <h3 class="h3 card-title">
+                                    <a href="#">Rome</a>
+                                </h3>
+
+                                <p class="card-text">
+                                    Rome's culinary heritage is a celebration of authentic Italian flavors! 
+                                    Savor traditional pasta dishes like Carbonara and Cacio e Pepe, crispy 
+                                    Roman-style pizza, and creamy gelato. Explore local trattorias and enjoy 
+                                    aperitivo with classic Italian wines.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" title="More Destinations">More destintions</button>
 
                 </div>
             </section>
@@ -424,7 +683,7 @@
                                         <span>/ per person</span>
                                     </p>
 
-                                    <button class="btn btn-secondary">Book Now</button>
+                                    <button class="btn btn-secondary" title="Book Now">Book Now</button>
 
                                 </div>
 
@@ -498,7 +757,7 @@
                                         <span>/ per person</span>
                                     </p>
 
-                                    <button class="btn btn-secondary">Book Now</button>
+                                    <button class="btn btn-secondary" title="Book Now">Book Now</button>
 
                                 </div>
 
@@ -572,7 +831,7 @@
                                         <span>/ per person</span>
                                     </p>
 
-                                    <button class="btn btn-secondary">Book Now</button>
+                                    <button class="btn btn-secondary" title="Book Now">Book Now</button>
 
                                 </div>
 
@@ -581,7 +840,7 @@
 
                     </ul>
 
-                    <button class="btn btn-primary">View All Packages</button>
+                    <button class="btn btn-primary" title="View All Packages">View All Packages</button>
 
                 </div>
             </section>
@@ -649,7 +908,7 @@
                         </p>
                     </div>
 
-                    <button class="btn btn-secondary">Contact Us !</button>
+                    <button class="btn btn-secondary" title="Contact Us">Contact Us !</button>
 
                 </div>
             </section>
@@ -718,7 +977,7 @@ Your adventure begins here! Stay inspired, discover new destinations, and plan u
                     <form action="" class="form-wrapper">
                         <input type="email" name="email" class="input-field" placeholder="Enter Your Email" required>
 
-                        <button type="submit" class="btn btn-secondary">Subscribe</button>
+                        <button type="submit" class="btn btn-secondary" title="Subscribe">Subscribe</button>
                     </form>
 
                 </div>
@@ -756,38 +1015,18 @@ Your adventure begins here! Stay inspired, discover new destinations, and plan u
         <ion-icon name="chevron-up-outline"></ion-icon>
     </a>
 
-
-
     <script src="script.js"></script>
-
-
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-    <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Show/hide scroll-to-top button
-        window.addEventListener('scroll', function() {
-            const goTop = document.querySelector('.go-top');
-            if (window.scrollY > 500) {
-                goTop.style.opacity = '1';
-                goTop.style.visibility = 'visible';
-            } else {
-                goTop.style.opacity = '0';
-                goTop.style.visibility = 'hidden';
-            }
-        });
-    </script>
-
+    <!-- Add the switch button -->
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        <em>Enable Dark Mode!(Bela agar tumhari ankhein dard karre to iss button ko click karo)</em>
+    </div>
 </body>
 
 </html>
