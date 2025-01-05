@@ -3,7 +3,7 @@
     --united-nations-blue: hsl(214, 56%, 58%);
     --bright-navy-blue: hsl(214, 57%, 51%);
     --spanish-gray: hsl(0, 0%, 60%);
-    --black-coral: hsl(225, 8%, 42%);
+    --black-coral: hsl(225, 8%, 80%);
     --oxford-blue: hsl(208, 97%, 12%);
     --yale-blue: hsl(214, 72%, 33%);
     --blue-ncs: hsl(197, 100%, 36%);
@@ -40,11 +40,13 @@
     --radius-25: 25px;
 
     --background-primary: #ffffff;
-    --text-primary: #1a1a1a;
+    --text-primary: #ffffff;
     --white: #1a1a1a;
     --black: #ffffff;
     --card-bg: var(--cultured);
     --header-bg: transparent;
+
+    --card-text: hsl(0, 0%, 90%);
 
 }
 
@@ -54,6 +56,7 @@
     --text-primary: #ffffff;
     --card-bg: #2d2d2d;
     --header-bg: #1a1a1a;
+    --black-coral: hsl(225, 8%, 80%);
 }
 
 *,
@@ -204,14 +207,13 @@ body {
 }
 
 .section-text {
-    color: var(--black-coral);
+    color: var(--text-primary);
     margin-bottom: 30px;
 }
 
 .card-text {
-    color: var(--gunmetal);
+    color: var(--card-text);
     font-size: var(--fs-5);
-    font-weight: 500;
 }
 
 .header {
@@ -306,13 +308,12 @@ body {
 }
 
 .social-link {
-    color: var(--white) !important;
+    color: var(--white);
     padding: 8px;
     border: 1px solid hsla(0, 0%, 100%, 0.3);
     border-radius: 50%;
     font-size: 15px;
     transition: var(--transition);
-    opacity: 0.9;
 }
 
 .social-link:is(:hover, :focus) {
@@ -374,8 +375,8 @@ body {
 
 .navbar-link {
     padding: 15px 20px;
-    color: var(--white) !important;
-    font-weight: var(--fw-600);
+    color: var(--jet);
+    font-weight: var(--fw-500);
     font-size: var(--fs-4);
     transition: var(--transition);
     text-transform: capitalize;
@@ -436,10 +437,9 @@ body {
 }
 
 .hero-text {
-    color: var(--white) !important;
+    color: var(--white);
     font-size: var(--fs-5);
     margin-bottom: 40px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .btn-group {
@@ -617,6 +617,7 @@ body {
 .package-card .card-text {
     line-height: 1.6;
     margin-bottom: 20px;
+    color: var(--text-primary);
 }
 
 .card-meta-list {
@@ -651,7 +652,7 @@ body {
     align-items: center;
     gap: 5px;
     padding-inline: 9px;
-    color: var(--black-coral);
+    color: var(--text-primary);
     font-size: var(--fs-8);
 }
 
@@ -1399,7 +1400,7 @@ body.light-mode {
 }
 
 body.dark-mode {
-    background-color: #121212;
+    background-color: #000000;
     color: #ffffff;
 }
 
@@ -1426,7 +1427,6 @@ body.dark-mode {
     background: var(--white);
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    color: var(--gunmetal);
 }
 
 .search-box {
@@ -1442,17 +1442,11 @@ body.dark-mode {
     border-radius: 25px;
     font-size: 16px;
     transition: all 0.3s ease;
-    color: var(--gunmetal);
-    background-color: var(--white);
 }
 
 .search-box input:focus {
     outline: none;
     box-shadow: 0 0 5px var(--bright-navy-blue);
-}
-
-.search-box input::placeholder {
-    color: var(--black-coral);
 }
 
 .search-button {
@@ -1506,8 +1500,7 @@ body.dark-mode {
 }
 
 .search-result-item h4 {
-    color: var(--bright-navy-blue);
-    font-weight: 600;
+    color: var(--gunmetal);
     margin-bottom: 5px;
 }
 
@@ -1537,7 +1530,6 @@ body.dark-mode {
 /* Dark mode adjustments */
 body.dark-mode .search-modal-content {
     background: var(--gunmetal);
-    color: var(--white);
 }
 
 body.dark-mode .search-box input {
@@ -1546,134 +1538,14 @@ body.dark-mode .search-box input {
     border-color: var(--bright-navy-blue);
 }
 
-body.dark-mode .search-box input::placeholder {
-    color: var(--gainsboro);
-}
-
-body.dark-mode .search-result-item h4 {
-    color: var(--united-nations-blue);
-}
-
-body.dark-mode .search-result-item p {
-    color: var(--gainsboro);
+body.dark-mode .search-result-item {
+    border-color: var(--black-coral);
 }
 
 body.dark-mode .search-result-item:hover {
     background-color: var(--yale-blue);
 }
 
-body.dark-mode .search-result-item:hover h4 {
-    color: var(--white);
-}
-
-body.dark-mode .search-result-item:hover p {
-    color: var(--cultured);
-}
-
 body.dark-mode .close-search {
-    color: var(--white);
-}
-
-/* Add hover effects for better interaction */
-.search-result-item:hover h4 {
-    color: var(--bright-navy-blue);
-}
-
-.search-result-item:hover p {
-    color: var(--yale-blue);
-}
-
-/* Update section text colors */
-body.dark-mode .section-text {
-    color: #e0e0e0;
-}
-
-/* Update card text colors */
-body.dark-mode .card-text {
-    color: #e0e0e0;
-}
-
-/* Header adjustments for dark mode */
-body.dark-mode .header .navbar-link {
-    color: #ffffff !important;
-}
-
-body.dark-mode .header.active .navbar-link {
-    color: #e0e0e0 !important;
-}
-
-/* Update link colors */
-.card-subtitle a,
-.card-title a {
-    color: var(--bright-navy-blue);
-    transition: color 0.3s ease;
-}
-
-body.dark-mode .card-subtitle a,
-body.dark-mode .card-title a {
-    color: var(--united-nations-blue);
-}
-
-/* Add text shadow to important headings for better visibility */
-.h1, .h2, .h3 {
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Update header contact info colors */
-.helpline-box .wrapper {
-    color: var(--white) !important;
-}
-
-.helpline-title {
-    color: var(--white) !important;
-    font-weight: 500;
-}
-
-.helpline-number {
-    color: var(--white) !important;
-    font-weight: 600;
-}
-
-/* Update social links color */
-.social-link {
-    color: var(--white) !important;
-    opacity: 0.9;
-}
-
-.social-link:hover {
-    opacity: 1;
-}
-
-/* Package card price text */
-.package-card .price {
-    color: var(--white);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-/* Footer text adjustments */
-.footer-text {
-    color: var(--white);
-    opacity: 0.9;
-}
-
-.contact-text {
-    color: var(--white);
-    opacity: 0.9;
-}
-
-/* Search modal text adjustments */
-.search-modal-content {
-    color: var(--gunmetal);
-}
-
-body.dark-mode .search-modal-content {
-    color: var(--white);
-}
-
-.search-box input {
-    color: var(--gunmetal);
-}
-
-body.dark-mode .search-box input {
     color: var(--white);
 }
