@@ -1423,6 +1423,7 @@ body.dark-mode {
     background: var(--white);
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    color: var(--gunmetal);
 }
 
 .search-box {
@@ -1438,11 +1439,17 @@ body.dark-mode {
     border-radius: 25px;
     font-size: 16px;
     transition: all 0.3s ease;
+    color: var(--gunmetal);
+    background-color: var(--white);
 }
 
 .search-box input:focus {
     outline: none;
     box-shadow: 0 0 5px var(--bright-navy-blue);
+}
+
+.search-box input::placeholder {
+    color: var(--black-coral);
 }
 
 .search-button {
@@ -1496,7 +1503,8 @@ body.dark-mode {
 }
 
 .search-result-item h4 {
-    color: var(--gunmetal);
+    color: var(--bright-navy-blue);
+    font-weight: 600;
     margin-bottom: 5px;
 }
 
@@ -1526,6 +1534,7 @@ body.dark-mode {
 /* Dark mode adjustments */
 body.dark-mode .search-modal-content {
     background: var(--gunmetal);
+    color: var(--white);
 }
 
 body.dark-mode .search-box input {
@@ -1534,14 +1543,39 @@ body.dark-mode .search-box input {
     border-color: var(--bright-navy-blue);
 }
 
-body.dark-mode .search-result-item {
-    border-color: var(--black-coral);
+body.dark-mode .search-box input::placeholder {
+    color: var(--gainsboro);
+}
+
+body.dark-mode .search-result-item h4 {
+    color: var(--united-nations-blue);
+}
+
+body.dark-mode .search-result-item p {
+    color: var(--gainsboro);
 }
 
 body.dark-mode .search-result-item:hover {
     background-color: var(--yale-blue);
 }
 
+body.dark-mode .search-result-item:hover h4 {
+    color: var(--white);
+}
+
+body.dark-mode .search-result-item:hover p {
+    color: var(--cultured);
+}
+
 body.dark-mode .close-search {
     color: var(--white);
+}
+
+/* Add hover effects for better interaction */
+.search-result-item:hover h4 {
+    color: var(--bright-navy-blue);
+}
+
+.search-result-item:hover p {
+    color: var(--yale-blue);
 }
